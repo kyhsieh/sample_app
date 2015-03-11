@@ -1,14 +1,14 @@
 class UsersController < ApplicationController
-  def new
+  def new   # for GET, /users, user_path
     @user = User.new
   end
 
-  def show
+  def show   # for GET, /users/x, user_path(user)
     #debugger
     @user = User.find(params[:id]);
   end
 
-  def create
+  def create   # for POST, /users, users_path
     @user = User.new(user_params)
     if @user.save
       flash[:success] = "#{@user.name}, welcome to the Sample App!"

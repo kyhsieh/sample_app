@@ -1,4 +1,5 @@
 module UsersHelper
+  # get the gravator URL by user's email
   def gravatar_for(user, options = { size: 80 })
     gravatar_id = Digest::MD5::hexdigest(user.email.downcase)
     size = options[:size]
