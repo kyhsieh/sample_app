@@ -14,4 +14,10 @@ class User < ActiveRecord::Base
 
   # add the ability to store HASH version password in DB, must have a DB column with name "password_digest"
   has_secure_password
+
+  def User.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
+    BCrypt::Password.create(string, cost: cost)
+  end
+
 end

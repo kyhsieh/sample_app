@@ -9,9 +9,10 @@ class UsersController < ApplicationController
   end
 
   def create   # for POST, /users, users_path
-    @user = User.new(user_params)
+    @user = User.new(user_params)   # use the user_params func to permit only the attribute needed and allowed, instead of whole User
     if @user.save
       flash[:success] = "#{@user.name}, welcome to the Sample App!"
+      log_in @user
       redirect_to @user
     else
       render 'new'
